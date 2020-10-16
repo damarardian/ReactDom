@@ -33,10 +33,16 @@ const Navbar = ({ children }) => {
                 </Link>
               </li>
               <li className="nav-item">
+                <Link className="nav-link" to="/corona">
+                  Corona
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link className="nav-link" to="/contact">
                   Contact
                 </Link>
               </li>
+              
               <li className="nav-item"></li>
             </ul>
           </div>

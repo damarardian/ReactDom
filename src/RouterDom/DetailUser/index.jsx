@@ -1,9 +1,11 @@
 import React from "react";
-import { useParams , Link } from "react-router-dom";
+import { useParams , Link, useHistory } from "react-router-dom";
 import Axios from 'axios';
 import {config} from '../config'
+import Navbar from "../Navbar";
 
 const DetailUser = (props) => {
+    let history = useHistory();
     let {id} = useParams();
     let [user, setUser] = React.useState([]);
     React.useEffect(() => {
@@ -21,29 +23,42 @@ const DetailUser = (props) => {
 
     const NextHandle = () => {
       let nextId = parseInt(id, 10) + 1;
-      props.history.push(`/DetailUser/${nextId}`)   
+      history.push(`/admin/DetailUser/${nextId}`)   
     }
 
     const PrevHandle = () => {
       let prevId = parseInt(id, 10) - 1;
-      props.history.push(`/DetailUser/${prevId}`)
+      history.push(`/admin/DetailUser/${prevId}`)
     }
 
   return (
     <React.Fragment>
-      <h3>Detail User {user.first_name}</h3>
-      <div className="container">
-        <img className="rounded-circle" src={user.avatar} alt=""/>
-        <h3>{user.first_name} {user.last_name}</h3>
-        <h4>{user.email}</h4>
-        <div className="">      
-          <button disabled={id < 2} onClick={PrevHandle}>Previous</button>
-          <button onClick={NextHandle}>Next</button>   
-        </div>
-        <Link to="/">
-          <button>Back</button>
-        </Link>
+      <div>
+        <Navbar/>
+      </div>    
+      <div className="container">          
+        <div class="card text-center">
+          <div class="card-header">
+          {user.first_name}
+          </div>
+          <div class="card-body">
+            <img className="rounded-circle" src={user.avatar} alt=""/>
+            <h3>{user.first_name} {user.last_name}</h3>
+            <p>{user.email}</p>
+            <div className="d-flex justify-content-around ">      
+              <button className="btn btn-info" disabled={id < 2} onClick={PrevHandle}>Previous</button>
+              <button className="btn btn-info" disabled={id > 11} onClick={NextHandle}>Next</button>   
+            </div>
+            <Link to="/">
+              <button className="btn btn-danger">Back</button>
+            </Link>
+          </div>
+          <div class="card-footer text-muted">
+            2 days ago
+          </div>
+        </div>        
       </div>
+
       {/* <h4>cara 1: {id}</h4>
       <h4>cara 2: {props.match.params.id}</h4> */}
     </React.Fragment>

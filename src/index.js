@@ -9,12 +9,13 @@ import * as serviceWorker from './serviceWorker';
 //import BelajarHook from './Hook/belajarHook'
 //import BelajaruseCallback from './Hook/useCallback'
 //import BelajaruseMemo from './Hook/useMemo'
-import App from './RouterDom/App'
+//import App from './RouterDom/App'
+import Index from "./RouterDom/RouteJSON/index";
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
   <React.StrictMode>
-    <App/>
+    <Index />
   </React.StrictMode>,
   document.getElementById('root')
 );

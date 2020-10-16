@@ -9,10 +9,13 @@ import Register from "./Register/index";
 import DetailUser from "./DetailUser/index"
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ProtectedRoute from "./Component/ProtectedRoute"
+import ProtectedLogin from "./Component/ProtectedLogin";
+import NotFound from "./NotFound/index"
+import Corona from "./Corona/index"
 
 export default function App() {
     return(
-        <div className="App">
+    <div className="App">
       <BrowserRouter>
         <Switch>
           <ProtectedRoute exact path="/">
@@ -30,13 +33,15 @@ export default function App() {
               <Contact />
             </Navbar>
           </Route>
-          <Route path="/DetailUser/:id">
+          <Route path="/DetailUser/:id" component={DetailUser} />            
+          <Route path="/corona">
             <Navbar>
-              <DetailUser />
+              <Corona />
             </Navbar>
           </Route>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
+          <ProtectedLogin path="/login" component={Login} />
+          <ProtectedLogin path="/register" component={Register} />
+          <Route  component={NotFound} />
         </Switch>
       </BrowserRouter>
     </div>

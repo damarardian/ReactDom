@@ -38,7 +38,7 @@ const Home = () => {
                 <td>{index+1}</td>
                 <td>
                   <Link to ={`DetailUser/${list.id}`}>
-                    <p className="btn border button-outline">Detail</p>
+                    <p className="btn btn-outline-primary">Detail</p>
                   </Link>
                 </td>
                 <td>
